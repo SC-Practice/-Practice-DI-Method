@@ -1,8 +1,9 @@
-﻿using System;
+﻿using _Practice_DI_Method;
+using System;
 
 namespace _Practice_DI_Constructor
 {
-    public class ShortMessageService
+    public class ShortMessageService : IMessageService
     {
         public void Send(User user, string msg)
         {

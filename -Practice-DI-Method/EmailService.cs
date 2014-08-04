@@ -1,8 +1,9 @@
-﻿using System;
+﻿using _Practice_DI_Method;
+using System;
 
 namespace _Practice_DI_Constructor
 {
-    public class EmailService
+    public class EmailService : IMessageService
     {
         public void Send(User user, string msg)
         {
