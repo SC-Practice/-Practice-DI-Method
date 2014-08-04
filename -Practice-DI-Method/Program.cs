@@ -16,9 +16,11 @@ namespace _Practice_DI_Method
         {
             var authService = new AuthenticationService();
 
+            IMessageService msgService = new EmailService();
+            
             #region 使用 authService 物件進行驗證判斷
 
-            if (authService.TwoFactorLogin(userId, password))
+            if (authService.TwoFactorLogin(userId, password, msgService))
             {
                 if (authService.VerifyToken("123456"))
                 {
