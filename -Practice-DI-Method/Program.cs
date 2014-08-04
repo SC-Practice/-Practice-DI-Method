@@ -3,6 +3,12 @@ using System;
 
 namespace _Practice_DI_Method
 {
+    enum MessageSendType
+    {
+        Email,
+        ShortMessage
+    }
+
     internal class Program
     {
         private static void Main(string[] args)
@@ -15,8 +21,21 @@ namespace _Practice_DI_Method
         public static void Login(string userId, string password)
         {
             var authService = new AuthenticationService();
+            var messageSendType = MessageSendType.Email;
 
-            IMessageService msgService = new EmailService();
+            IMessageService msgService = null;
+
+            switch (messageSendType)
+            {
+                case MessageSendType.Email:
+                    msgService = new EmailService();
+                    break;
+                case MessageSendType.ShortMessage:
+                    msgService = new ShortMessageService();
+                    break;
+                default:
+                    throw new ArgumentException(" 無效的訊息服務型別!");
+            }
             
             #region 使用 authService 物件進行驗證判斷
 
